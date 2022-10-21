@@ -1,0 +1,9 @@
+set autoindent
+set ignorecase
+set smartcase
+set hlsearch
+set encoding=utf-8
+set number
+set title
+set background=dark
+syntax on
