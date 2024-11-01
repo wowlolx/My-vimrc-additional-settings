@@ -4,7 +4,7 @@ set shiftwidth=4
 
 " Highlight and Incremental Searches
 set incsearch
-set nohlsearch
+set hlsearch
 " Better splits with :split , :new (Horizontally) and :vsplit (Vertically)
 set splitbelow
 set splitright
@@ -20,9 +20,9 @@ set scrolloff=8
 set undofile
 set undodir=~/.vim/undo
 
+" Case insensitive searches
 set ignorecase
 set smartcase
-set hlsearch
 
 "Unicode Support
 set encoding=utf-8
@@ -35,12 +35,12 @@ set numberwidth=4
 set title
 set background=dark
 
-" Enable Mouse
+" Enable Mouse (Use y , d and p for copy , cut , paste in mouse visual mode)
 set mouse=a
 
 "Colors
 syntax on
-set termguicolors
+"set termguicolors
 
 "Modifying Tab Spaces , number of spaces in a <Tab>
 set tabstop=4
@@ -81,16 +81,6 @@ noremap <C-w> :tabclose<CR>
 " Map Ctrl + T to toggle NERDTree
 noremap <C-t> :NERDTreeToggle<CR>
 
-" Map Ctrl+C to copy (yank) the selected text to the system clipboard in Visual mode
-vnoremap <C-c> "y
-
-" Map Ctrl+X to cut (delete) the selected text to the system clipboard in Visual mode
-vnoremap <C-x> "d
-
-" Map Ctrl+V to paste from the system clipboard in both Normal and Visual modes
-nnoremap <C-v> "+p
-vnoremap <C-v> "+p
-
 " F5 for Undo History
 nnoremap <F5> :UndotreeToggle<CR>
 
@@ -113,3 +103,5 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+
