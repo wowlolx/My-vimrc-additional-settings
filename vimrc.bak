@@ -33,7 +33,6 @@ set numberwidth=4
 
 "Title and Background
 set title
-set background=dark
 
 " Enable Mouse (Use y , d and p for copy , cut , paste in mouse visual mode)
 set mouse=a
@@ -57,6 +56,7 @@ set expandtab
 call plug#begin()
 Plug 'preservim/NERDTree'
 Plug 'vim-airline/vim-airline'
+Plug 'gruvbox-community/gruvbox'
 Plug 'mbbill/undotree'
 call plug#end()
 
@@ -105,3 +105,33 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
+
+" GruvBox Theme Settings
+"Dark / Light
+set background=dark
+
+" Gruvbox configuration options (Hard , medium , soft)
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_invert_selection = 1        " Visuals must be super cool
+let g:gruvbox_termcolors = 256             " Terminal colors
+
+" Horizontal and vertical cursor line
+set cursorline
+"set cursorcolumn       " For vertical Line, if needed
+
+" Maybe Change Font in future
+if has("gui_running")
+    set guifont=Monospace\ 15
+endif
+
+" Customizing Visual Mode (BCz I love highlightings) 
+highlight Visual guibg=#504945 cterm=bold
+highlight VisualNOS guibg=#7c6f64 cterm=bold
+
+" Setting Folds and Opeing all (Folds of classes, funcs like in vscode)
+set foldmethod=syntax
+set foldlevel=99
+
+" color scheme
+colorscheme gruvbox
