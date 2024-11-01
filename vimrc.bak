@@ -14,14 +14,14 @@ syntax on
 call plug#begin()
 Plug 'preservim/NERDTree'
 Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Commands to Install and Update Plugins: `:PlugInstall`  , `:PlugUpdate`
 " Plugin Name to execute Plugin like: `:NERDTree`
 
 
-" NERDTree Commands
-autocmd VimEnter * NERDTree
+"Mapping Commands
 
 " Map Ctrl + Left Arrow to go to the previous tab
 noremap <C-l> :tabp<CR>
@@ -37,3 +37,25 @@ noremap <C-w> :tabclose<CR>
 
 " Map Ctrl + T to toggle NERDTree
 noremap <C-t> :NERDTreeToggle<CR>
+
+
+
+"NERDTree Commands and Shortcuts
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree. (Code not runs in NERDTree)
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
