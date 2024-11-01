@@ -10,10 +10,30 @@ syntax on
 "  Intalling vim-plug For Plugins manager: `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 " Commands To Add Plugins
 
-" NERDTree for Tree syntax of directory
+" NERDTree for Tree syntax of directory , AirLine for interface theme
 call plug#begin()
 Plug 'preservim/NERDTree'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " Commands to Install and Update Plugins: `:PlugInstall`  , `:PlugUpdate`
 " Plugin Name to execute Plugin like: `:NERDTree`
+
+
+" NERDTree Commands
+autocmd VimEnter * NERDTree
+
+" Map Ctrl + Left Arrow to go to the previous tab
+noremap <C-l> :tabp<CR>
+
+" Map Ctrl + Right Arrow to go to the next tab
+noremap <C-k> :tabn<CR>
+
+" Map Ctrl + N to create a new tab
+noremap <C-n> :tabnew<CR>
+
+" Map Ctrl + W to close the current tab
+noremap <C-w> :tabclose<CR>
+
+" Map Ctrl + T to toggle NERDTree
+noremap <C-t> :NERDTreeToggle<CR>
