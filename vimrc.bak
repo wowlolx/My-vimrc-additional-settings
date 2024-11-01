@@ -1,12 +1,55 @@
-set autoindent
+"Intendation fixes
+set smartindent
+set shiftwidth=4
+
+" Highlight and Incremental Searches
+set incsearch
+set nohlsearch
+" Better splits with :split , :new (Horizontally) and :vsplit (Vertically)
+set splitbelow
+set splitright
+
+" Saving unsaved Buffers
+set hidden
+
+" Increasing scroll offs
+set scrolloff=8
+
+" Setting undofile file and to use UndoTreeToggle Plugin for Git like
+" UndoHistory - 'Undo History with F5'
+set undofile
+set undodir=~/.vim/undo
+
 set ignorecase
 set smartcase
 set hlsearch
+
+"Unicode Support
 set encoding=utf-8
+
+"Modifying lines and numbers
 set number
+set numberwidth=4
+
+"Title and Background
 set title
 set background=dark
+
+" Enable Mouse
+set mouse=a
+
+"Colors
 syntax on
+set termguicolors
+
+"Modifying Tab Spaces , number of spaces in a <Tab>
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+
+
+
 "  Intalling vim-plug For Plugins manager: `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 " Commands To Add Plugins
 
@@ -14,7 +57,7 @@ syntax on
 call plug#begin()
 Plug 'preservim/NERDTree'
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " Commands to Install and Update Plugins: `:PlugInstall`  , `:PlugUpdate`
@@ -38,7 +81,18 @@ noremap <C-w> :tabclose<CR>
 " Map Ctrl + T to toggle NERDTree
 noremap <C-t> :NERDTreeToggle<CR>
 
+" Map Ctrl+C to copy (yank) the selected text to the system clipboard in Visual mode
+vnoremap <C-c> "y
 
+" Map Ctrl+X to cut (delete) the selected text to the system clipboard in Visual mode
+vnoremap <C-x> "d
+
+" Map Ctrl+V to paste from the system clipboard in both Normal and Visual modes
+nnoremap <C-v> "+p
+vnoremap <C-v> "+p
+
+" F5 for Undo History
+nnoremap <F5> :UndotreeToggle<CR>
 
 "NERDTree Commands and Shortcuts
 
