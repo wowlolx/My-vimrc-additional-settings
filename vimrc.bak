@@ -135,3 +135,6 @@ set foldlevel=99
 
 " color scheme
 colorscheme gruvbox
+
+" Add codium for autocomplete
+" Add https://github.com/junegunn/fzf?tab=readme-ov-file#vimneovim-plugin
