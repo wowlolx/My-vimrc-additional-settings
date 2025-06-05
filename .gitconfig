@@ -1,0 +1,17 @@
+[protocol "file"]
+	allow = always
+[core]
+    pager = delta # apt install git-delta
+    symlinks = true
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    side-by-side = true
+    line-numbers = true
+[merge]
+    conflictstyle = zdiff3    
+[init]
+	defaultBranch = main
